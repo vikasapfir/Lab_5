@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class SentenceConverterTest {
 
@@ -41,5 +41,19 @@ public class SentenceConverterTest {
     public void testConvertSentenceWithoutQuestions() {
         String sentence = "Hello, my name is John. I like eating icecream.";
         assertEquals("Hello, my name is John. I like eating icecream.", converter.reverseWords(sentence));
+    }
+
+    @Test
+    public void testConvertWithDash() {
+        String sentence = "Hello - can you buy this?";
+        assertEquals("Hello - nac you buy this?", converter.reverseWords(sentence));
+    }
+
+    @Test
+    public void testEmpty() {
+        SentenceConverter sentenceConverter =new SentenceConverter();
+        String rezMet = sentenceConverter.reverseWords("");
+        String rezMy = "";
+        assertTrue(rezMy.equals(rezMet));
     }
 }
